@@ -19,49 +19,27 @@ la key que se da se convierte en índices de una Hash Table
 */
 
 int main() {
-    //declarando explorador que sea <string, int> 
+    //declarando explorador que sea <string, Character> 
     //key seria string y el valor seria
-    //un entero
-    unordered_map<string, int> explorador;
+    //un objeto character
+    unordered_map<string, Character*> elMap;
     Explorador explorer;
-  
-    //insertar valores dando la key
-    explorador["velocidad"] = explorer.getSpeed();
-    explorador["carga"] = explorer.getCapacity();
-  
-    //iterar por un unordered map
-    cout << "Explorador: " << endl;
-    for(auto iterar : explorador) {
-      cout << iterar.first << " " << iterar.second << endl;
-    }
-  //------------------------------------------
-    unordered_map<string, int> carguero;
     Carguero carg;
-  
-    //insertar valores dando la key
-    carguero["velocidad"] = carg.getSpeed();
-    carguero["carga"] = carg.getCapacity();
-  
-    //iterar por un unordered map
-    cout << "Carguero: " << endl;
-    for(auto iterar : carguero) {
-      cout << iterar.first << " " << iterar.second << endl;
-    }
-
-    //------------------------------------------
-    unordered_map<string, int> topo;
     Topo top;
-  
+
     //insertar valores dando la key
-    topo["velocidad"] = top.getSpeed();
-    topo["carga"] = top.getCapacity();
+    elMap["explorador"] = &explorer;
+    elMap["carguero"] = &carg;
+    elMap["topo"] = &top;
   
     //iterar por un unordered map
-    cout << "Topo: " << endl;
-    for(auto iterar : topo) {
-      cout << iterar.first << " " << iterar.second << endl;
+    cout << "Implementacion: " << endl;
+    for(auto iterar : elMap) {
+      int veloc = iterar.second->getSpeed();
+      //cout << veloc << endl;
+      cout << iterar.first << " " << iterar.second->recogerMineral() << endl;
     }
-    /*
+  /*
     unordered_map es más rápido que un map, ya que utiliza una 
     hash table, mientras que un mapa se implementa usando un 
     árbol binario llamado Red-black tree
